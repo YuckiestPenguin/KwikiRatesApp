@@ -10,5 +10,11 @@
   <%= @country.country_code %>
 </p>
 
+<ul>
+  <% @country.ports.each do |port| %>
+  <li><%= link_to port.name, port %> | <%=  link_to port.port_code, port %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_country_path(@country) %> |
 <%= link_to 'Back', countries_path %>
