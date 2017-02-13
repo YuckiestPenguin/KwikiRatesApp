@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1><strong><%= @carrier.name %></strong></h1>
+
+
+<h2>
+  <strong>Carrier type:</strong>
+  <%= @carrier.carrier_type.name %>
+</h2>
+
+<%= link_to 'Edit', edit_carrier_path(@carrier) %> |
+<%= link_to 'Back', carriers_path %>
