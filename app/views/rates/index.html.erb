@@ -4,7 +4,15 @@
   <h1>Rates</h1>
 </div>
 
+
 <%= search_form_for @search do |f| %>
+<div class="field">
+  <h3>Country</h3>
+  <%= f.label :shipment_type_name_cont, "Origin Country: " %>
+  <%= f.text_field :origin_country_name_cont, placeholder: "Ex: China, Brazil, Germany" %>
+  <%= f.label :carrier_name_cont, "Destination Country: " %>
+  <%= f.text_field :destination_country_name_cont, placeholder: "Ex: China, Brazil, Germany" %>
+</div>
   <div class="field">
     <h3>Port Name</h3>
     <%= f.label :origin_name_cont, "From:" %>
@@ -20,6 +28,13 @@
     <%= f.label :destination_name_cont, "To:" %>
     <%= f.text_field :destination_port_code_cont, placeholder: "Ex: FRA" %>
   </div>
+  <div class="field">
+    <h3>Shipment Info</h3>
+    <%= f.label :shipment_type_name_cont, "Shipment Type: " %>
+    <%= f.text_field :shipment_type_name_cont, placeholder: "Ex: Air Freight, LCL, FCL" %>
+    <%= f.label :carrier_name_cont, "Carrier Name: " %>
+    <%= f.text_field :carrier_name_cont, placeholder: "Ex: United Cargo, Carotrans, Seacorp" %>
+  </div>
 
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
@@ -27,11 +42,13 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Origin</th>
-      <th>Destination</th>
-      <th>Carrier</th>
-      <th>Shipment type</th>
-      <th>Cost</th>
+      <th><%= sort_link(@search, :origin_port_code, "Origin Port Code") %></th>
+      <th><%= sort_link(@search, :origin_name, "Origin Port Name") %></th>
+      <th><%= sort_link(@search, :destination_port_code, "Origin Port Code") %></th>
+      <th><%= sort_link(@search, :destination_name, "Destination Port Code") %></th>
+      <th><%= sort_link(@search, :carrier_name, "Carrier") %></th>
+      <th><%= sort_link(@search, :shipment_type_name, "Shipment Type") %></th>
+      <th><%= sort_link(@search, :cost, "Cost") %></th>
       <th>Unit of measure</th>
       <th colspan="3"></th>
     </tr>
@@ -40,7 +57,9 @@
   <tbody>
     <% @rates.each do |rate| %>
       <tr>
+        <td><%= rate.origin.port_code %></td>
         <td><%= rate.origin.name %></td>
+        <td><%= rate.destination.port_code %></td>
         <td><%= rate.destination.name %></td>
         <td><%= rate.carrier.name %></td>
         <td><%= rate.shipment_type.name %></td>
