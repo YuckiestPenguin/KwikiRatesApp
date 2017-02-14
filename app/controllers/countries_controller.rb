@@ -1,11 +1,17 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
 
+  # require 'will_paginate'
   # GET /countries
   # GET /countries.json
+
+
   def index
     @countries = Country.all
   end
+
+
+
 
   # GET /countries/1
   # GET /countries/1.json

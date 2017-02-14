@@ -1,6 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rates</h1>
+<div class="jumbotron">
+  <h1>Rates</h1>
+</div>
+
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <h3>Port Name</h3>
+    <%= f.label :origin_name_cont, "From:" %>
+    <%= f.text_field :origin_name_cont, placeholder: "Ex: Port of Baltimore" %>
+    <%= f.label :destination_name_cont, "To:" %>
+    <%= f.text_field :destination_name_cont, placeholder: "Ex: Port of Hamburg" %>
+  </div>
+  <hr>
+  <div class="field">
+    <h3>Port Code</h3>
+    <%= f.label :origin_name_cont, "From:" %>
+    <%= f.text_field :origin_port_code_cont, placeholder: "Ex: BWI" %>
+    <%= f.label :destination_name_cont, "To:" %>
+    <%= f.text_field :destination_port_code_cont, placeholder: "Ex: FRA" %>
+  </div>
+
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
 
 <table class="table">
   <thead>
@@ -33,5 +55,6 @@
 </table>
 
 <br>
+
 
 <%= link_to 'New Rate', new_rate_path %>

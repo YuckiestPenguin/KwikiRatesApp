@@ -1,11 +1,23 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /rates
   # GET /rates.json
+
+
+
+  # def index
+  #   @rates = Rate.all
+  # end
+
   def index
-    @rates = Rate.all
+    @search = Rate.search(params[:q])
+    @rates = @search.result
+    #code
   end
+
 
   # GET /rates/1
   # GET /rates/1.json
