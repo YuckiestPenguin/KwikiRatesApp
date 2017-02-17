@@ -1,79 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron">
-  <h1>Rates</h1>
+<div class="jumbotron text-center">
+    <h1>Rates</h1>
+    <div class="container">
+        <div class="row">
+            <%= search_form_for @search do |f| %>
+            <div class="col-md-3">
+                <div class="field">
+                    <h3>Origin</h3>
+                    <%= f.text_field :origin_country_name_or_origin_name_or_origin_port_code_or_origin_country_country_code_cont, placeholder: "Ex: BAL, Port of Baltimore, US", class: "input-lg form-control" %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="field">
+                    <h3>Destination</h3>
+                    <%= f.text_field :destination_country_name_or_destination_name_or_destination_port_code_or_destination_country_country_code_cont, placeholder: "Ex: PVG, Shanghai, China", class: "input-lg form-control" %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="field">
+                    <h3>Shipment Type</h3>
+                    <%= f.text_field :shipment_type_name_cont, placeholder: "Ex: Air Freight, LCL, FCL", class: "input-lg form-control" %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="field">
+                    <h3>Carrier</h3>
+                    <%= f.text_field :carrier_name_cont, placeholder: "Ex: United Cargo, Carotrans, Seacorp", class: "input-lg form-control" %>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class=""><%= f.submit "Search", class: "btn btn-lg btn-primary actions" %></div>
+            </div>
+        </div>
+    </div>
+    <% end %>
 </div>
-
-
-<%= search_form_for @search do |f| %>
-<div class="field">
-  <h3>Country</h3>
-  <%= f.label :shipment_type_name_cont, "Origin Country: " %>
-  <%= f.text_field :origin_country_name_cont, placeholder: "Ex: China, Brazil, Germany" %>
-  <%= f.label :carrier_name_cont, "Destination Country: " %>
-  <%= f.text_field :destination_country_name_cont, placeholder: "Ex: China, Brazil, Germany" %>
-</div>
-  <div class="field">
-    <h3>Port Name</h3>
-    <%= f.label :origin_name_cont, "From:" %>
-    <%= f.text_field :origin_name_cont, placeholder: "Ex: Port of Baltimore" %>
-    <%= f.label :destination_name_cont, "To:" %>
-    <%= f.text_field :destination_name_cont, placeholder: "Ex: Port of Hamburg" %>
-  </div>
-  <hr>
-  <div class="field">
-    <h3>Port Code</h3>
-    <%= f.label :origin_name_cont, "From:" %>
-    <%= f.text_field :origin_port_code_cont, placeholder: "Ex: BWI" %>
-    <%= f.label :destination_name_cont, "To:" %>
-    <%= f.text_field :destination_port_code_cont, placeholder: "Ex: FRA" %>
-  </div>
-  <div class="field">
-    <h3>Shipment Info</h3>
-    <%= f.label :shipment_type_name_cont, "Shipment Type: " %>
-    <%= f.text_field :shipment_type_name_cont, placeholder: "Ex: Air Freight, LCL, FCL" %>
-    <%= f.label :carrier_name_cont, "Carrier Name: " %>
-    <%= f.text_field :carrier_name_cont, placeholder: "Ex: United Cargo, Carotrans, Seacorp" %>
-  </div>
-
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th><%= sort_link(@search, :origin_port_code, "Origin Port Code") %></th>
-      <th><%= sort_link(@search, :origin_name, "Origin Port Name") %></th>
-      <th><%= sort_link(@search, :destination_port_code, "Origin Port Code") %></th>
-      <th><%= sort_link(@search, :destination_name, "Destination Port Code") %></th>
-      <th><%= sort_link(@search, :carrier_name, "Carrier") %></th>
-      <th><%= sort_link(@search, :shipment_type_name, "Shipment Type") %></th>
-      <th><%= sort_link(@search, :cost, "Cost") %></th>
-      <th>Unit of measure</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th><%= sort_link(@search, :origin_port_code, "Origin Port Code") %></th>
+            <th><%= sort_link(@search, :origin_name, "Origin Port Name") %></th>
+            <th><%= sort_link(@search, :destination_port_code, "Destination Port Code") %></th>
+            <th><%= sort_link(@search, :destination_name, "Destination Port Name") %></th>
+            <th><%= sort_link(@search, :carrier_name, "Carrier") %></th>
+            <th><%= sort_link(@search, :shipment_type_name, "Shipment Type") %></th>
+            <th><%= sort_link(@search, :cost, "Cost") %></th>
+            <th>Unit of measure</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @rates.each do |rate| %>
-      <tr>
-        <td><%= rate.origin.port_code %></td>
-        <td><%= rate.origin.name %></td>
-        <td><%= rate.destination.port_code %></td>
-        <td><%= rate.destination.name %></td>
-        <td><%= rate.carrier.name %></td>
-        <td><%= rate.shipment_type.name %></td>
-        <td><%= number_to_currency(rate.cost) %></td>
-        <td><%= rate.unit_of_measure.name %></td>
-        <td><%= link_to 'Show', rate %></td>
-        <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
-        <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @rates.each do |rate| %>
+        <tr>
+            <td><%= rate.origin.port_code %></td>
+            <td><%= rate.origin.name %></td>
+            <td><%= rate.destination.port_code %></td>
+            <td><%= rate.destination.name %></td>
+            <td><%= rate.carrier.name %></td>
+            <td><%= rate.shipment_type.name %></td>
+            <td><%= number_to_currency(rate.cost) %></td>
+            <td><%= rate.unit_of_measure.name %></td>
+            <td><%= link_to 'Show', rate %></td>
+            <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
+            <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>
-
 
 <%= link_to 'New Rate', new_rate_path %>
