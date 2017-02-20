@@ -19,6 +19,7 @@ class RatesController < ApplicationController
   end
 
 
+
   # GET /rates/1
   # GET /rates/1.json
   def show

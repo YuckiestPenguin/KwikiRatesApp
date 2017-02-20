@@ -2,19 +2,19 @@
 
 <div class="jumbotron text-center">
     <h1>Rates</h1>
-    <div class="container">
+    <div class="container-fluid">
+      <%= search_form_for @search do |f| %>
         <div class="row">
-            <%= search_form_for @search do |f| %>
             <div class="col-md-3">
                 <div class="field">
                     <h3>Origin</h3>
-                    <%= f.text_field :origin_country_name_or_origin_name_or_origin_port_code_cont, placeholder: "Ex: BAL, Port of Baltimore, US", class: "input-lg form-control" %>
+                    <%= f.text_field :origin_country_country_code_or_origin_country_name_or_origin_name_or_origin_port_code_cont, placeholder: "Ex: BAL, Port of Baltimore, US", class: "input-lg form-control" %>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="field">
                     <h3>Destination</h3>
-                    <%= f.text_field :destination_country_name_or_destination_name_or_destination_port_code_cont, placeholder: "Ex: PVG, Shanghai, China", class: "input-lg form-control" %>
+                    <%= f.text_field :destination_country_country_code_or_destination_country_name_or_destination_name_or_destination_port_code_cont, placeholder: "Ex: PVG, Shanghai, China", class: "input-lg form-control" %>
                 </div>
             </div>
             <div class="col-md-3">
@@ -31,6 +31,7 @@
             </div>
         </div>
         <br>
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <div class=""><%= f.submit "Search", class: "btn btn-lg btn-primary actions" %></div>
@@ -39,7 +40,6 @@
     </div>
     <% end %>
 </div>
-
 
 <table class="table">
     <thead>
