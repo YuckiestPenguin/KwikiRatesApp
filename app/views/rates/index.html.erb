@@ -3,38 +3,42 @@
 <div class="jumbotron text-center">
     <h1>Rates</h1>
     <div class="container-fluid">
-      <%= search_form_for @search do |f| %>
+        <%= search_form_for @search do |f| %>
         <div class="row">
             <div class="col-md-3">
                 <div class="field">
-                    <h3>Origin</h3>
+                    <h3>ORIGIN</h3>
                     <%= f.text_field :origin_country_country_code_or_origin_country_name_or_origin_name_or_origin_port_code_cont, placeholder: "Ex: BAL, Port of Baltimore, US", class: "input-lg form-control" %>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="field">
-                    <h3>Destination</h3>
+                    <h3>DESTINATION</h3>
                     <%= f.text_field :destination_country_country_code_or_destination_country_name_or_destination_name_or_destination_port_code_cont, placeholder: "Ex: PVG, Shanghai, China", class: "input-lg form-control" %>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="field">
-                    <h3>Shipment Type</h3>
-                    <%= f.text_field :shipment_type_name_cont, placeholder: "Ex: Air Freight, LCL, FCL", class: "input-lg form-control" %>
+                    <h3>SHIPMENT TYPE</h3>
+                    <div class="selectpicker"><%= f.collection_select :shipment_type_id_eq_any, ShipmentType.all, :id, :name, :include_blank => false, :multiple => true, :prompt => "Select Shipment Type", class: "selectpicker", :select_prompt => "Select Shipment Type" %></div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="field">
-                    <h3>Carrier</h3>
+                    <h3>CARRIER</h3>
                     <%= f.text_field :carrier_name_cont, placeholder: "Ex: United Cargo, Carotrans, Seacorp", class: "input-lg form-control" %>
+
                 </div>
             </div>
         </div>
         <br>
+
         <br>
         <div class="row">
             <div class="col-md-12">
-                <div class=""><%= f.submit "Search", class: "btn btn-lg btn-primary actions" %></div>
+                <div><%= f.submit "Search", class: "btn btn-lg btn-primary actions" %>
+                    <%= link_to "Clear Search", request.path, class:"btn btn-lg btn-warning" %></div>
+                <div></div>
             </div>
         </div>
     </div>
@@ -67,9 +71,9 @@
             <td><%= rate.shipment_type.name %></td>
             <td><%= number_to_currency(rate.cost) %></td>
             <td><%= rate.unit_of_measure.name %></td>
-            <td><%= link_to 'Show', rate %></td>
-            <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
-            <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Info', rate, class: "btn btn-xs btn-info" %>
+                <%= link_to 'Edit', edit_rate_path(rate), class: "btn btn-xs btn-warning" %>
+                <%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
         </tr>
         <% end %>
     </tbody>

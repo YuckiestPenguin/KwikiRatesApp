@@ -14,7 +14,7 @@ class RatesController < ApplicationController
 
   def index
     @search = Rate.search(params[:q])
-    @rates = @search.result
+    @rates = @search.result(distinct: true)
     #code
   end
 
