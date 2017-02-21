@@ -55,4 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# Ransack is used for creating the search and filter.
 gem 'ransack'
+
+# Bootstrap Select Rails is used to make a nice clean dropdown for selecting items
+gem 'bootstrap-select-rails'

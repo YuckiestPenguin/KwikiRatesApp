@@ -20,7 +20,8 @@
             <div class="col-md-3">
                 <div class="field">
                     <h3>SHIPMENT TYPE</h3>
-                    <div class="selectpicker"><%= f.collection_select :shipment_type_id_eq_any, ShipmentType.all, :id, :name, :include_blank => false, :multiple => true, :prompt => "Select Shipment Type", class: "selectpicker", :select_prompt => "Select Shipment Type" %></div>
+                    <%= f.collection_select :shipment_type_id_eq_any, ShipmentType.all, :id, :name, :include_blank => false, :multiple => true, :prompt => "Select Shipment Type", :select_prompt => "Select Shipment Type", class: "form-control btn-lg"%>
+
                 </div>
             </div>
             <div class="col-md-3">
