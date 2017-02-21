@@ -60,10 +60,6 @@ gem 'ransack'
 # Bootstrap Select Rails is used to make a nice clean dropdown for selecting items
 gem 'bootstrap-select-rails'
 
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'sqlite3'
 
-group :production do
-  gem 'pg'
-end
+gem 'taps', '~> 0.3.24'
